@@ -9,10 +9,17 @@ loop, the redshift should be the inner loop.
 It is not always obvious which order the loops should be, so this module provides
 functions to determine that order, and indeed perform the loops.
 """
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals)
 
 import collections
-import hmf
 import itertools
+import sys
+
+from . import hmf
+
+if sys.version_info[0] == 3:
+    basestring = str
 
 
 # ===============================================================================

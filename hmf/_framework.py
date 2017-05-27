@@ -1,6 +1,8 @@
 '''
 Classes defining the overall structure of the hmf framework.
 '''
+from __future__ import print_function
+
 import copy
 import sys
 #from _cache import Cache
@@ -112,7 +114,7 @@ class Framework(object):
                     try:
                         out[name] = getattr(getattr(K,name.replace("_params","_model")),"_defaults")
                     except Exception as e:
-                        print e
+                        print(e)
                         pass
 
         return out

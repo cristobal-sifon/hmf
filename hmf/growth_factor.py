@@ -6,12 +6,15 @@ numerical calculation in standard flat LambdaCDM. Simplifications
 which may be more efficient, or extensions to alternate cosmologies,
 may be implemented.
 '''
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals)
 
 import numpy as np
 from scipy import integrate as intg
-from _framework import Component as Cmpt
 from scipy.interpolate import InterpolatedUnivariateSpline as _spline
-from _utils import inherit_docstrings as _inherit
+
+from ._framework import Component as Cmpt
+from ._utils import inherit_docstrings as _inherit
 
 
 class GrowthFactor(Cmpt):

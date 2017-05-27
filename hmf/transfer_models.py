@@ -4,9 +4,13 @@ Various models for computing the transfer function.
 Note that these are not transfer function "frameworks". The framework is found
 in :mod:`hmf.transfer`.
 '''
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals)
+
 import numpy as np
 from scipy.interpolate import InterpolatedUnivariateSpline as spline
-from _framework import Component
+
+from ._framework import Component
 try:
     import pycamb
 except ImportError:

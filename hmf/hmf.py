@@ -4,6 +4,8 @@ The primary module for user-interaction with the :mod:`hmf` package.
 The module contains a single class, `MassFunction`, which wraps almost all the
 functionality of :mod:`hmf` in an easy-to-use way.
 '''
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals)
 
 ###############################################################################
 # Some Imports
@@ -11,17 +13,22 @@ functionality of :mod:`hmf` in an easy-to-use way.
 import numpy as np
 import copy
 import logging
-import fitting_functions as ff
-import transfer
-from _cache import parameter, cached_property
-from integrate_hmf import hmf_integral_gtm as int_gtm
 from numpy import issubclass_
 logger = logging.getLogger('hmf')
-from filters import TopHat, Filter
-from _framework import get_model
 from scipy.optimize import minimize
 from scipy.interpolate import InterpolatedUnivariateSpline as spline
+import sys
 import warnings
+
+from ._cache import parameter, cached_property
+from . import fitting_functions as ff
+from . import transfer
+from .integrate_hmf import hmf_integral_gtm as int_gtm
+from .filters import TopHat, Filter
+from ._framework import get_model
+
+if sys.version_info[0] == 3:
+    basestring = str
 
 class MassFunction(transfer.Transfer):
     """

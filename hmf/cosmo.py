@@ -10,12 +10,18 @@ Also provided in the namespace are the pre-defined cosmologies from `astropy`:
 Cosmology framework. All custom subclasses of :class:`astropy.cosmology.FLRW`
 may be used as inputs.
 """
+from __future__ import absolute_import
 
-import _cache
 from astropy.cosmology import Planck13, FLRW, WMAP5, WMAP7, WMAP9, Planck15
-import _framework
 import sys
 import astropy.units as u
+
+from . import _cache
+from . import _framework
+
+if sys.version_info[0] == 3:
+    basestring = str
+
 
 class Cosmology(_framework.Framework):
     """

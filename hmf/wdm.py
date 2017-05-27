@@ -6,13 +6,20 @@ HMF) and Frameworks (Transfer and MassFunction). The latter inject WDM modelling
 the standard CDM Frameworks, and provide an example of how one would go about this for
 other alternative cosmologies.
 '''
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals)
 
 import numpy as np
-from transfer import Transfer as _Tr
-from hmf import MassFunction as _MF
-from _cache import parameter, cached_property
-from _framework import Component, get_model
 import astropy.units as u
+import sys
+
+from .transfer import Transfer as _Tr
+from .hmf import MassFunction as _MF
+from ._cache import parameter, cached_property
+from ._framework import Component, get_model
+
+if sys.version_info[0] == 3:
+    basestring = str
 
 #===============================================================================
 # Model Components

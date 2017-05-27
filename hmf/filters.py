@@ -2,14 +2,18 @@
 A module containing various smoothing filter Component models,
 including the popular top-hat in real space.
 '''
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals)
 
 import numpy as np
 from scipy.interpolate import InterpolatedUnivariateSpline as _spline
 import scipy.integrate as intg
 import collections
-import _framework
-import _utils
 import warnings
+
+from . import _framework
+from . import _utils
+
 
 class Filter(_framework.Component):
     r"""

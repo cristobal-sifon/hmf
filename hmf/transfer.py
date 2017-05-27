@@ -5,20 +5,29 @@ This module contains a single class, `Transfer`, which provides methods to
 calculate the transfer function, matter power spectrum and several other
 related quantities.
 """
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals)
+
 import numpy as np
-import cosmo
-from _cache import cached_property, parameter
-from halofit import halofit as _hfit
-import growth_factor as gf
-import transfer_models as tm
-from _framework import get_model
-import filters
+import sys
+
+from . import cosmo
+from . import growth_factor as gf
+from . import transfer_models as tm
+from . import filters
+from ._cache import cached_property, parameter
+from ._framework import get_model
+from .halofit import halofit as _hfit
+
+if sys.version_info[0] == 3:
+    basestring = str
 
 try:
     import pycamb
     HAVE_PYCAMB = True
 except ImportError:
     HAVE_PYCAMB = False
+
 
 class Transfer(cosmo.Cosmology):
     '''

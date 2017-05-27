@@ -4,14 +4,17 @@ A module defining several mass function fits.
 Each fit is taken from the literature. If there are others out there that are not
 listed here, please advise via GitHub.
 """
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals)
 
 import numpy as np
+from copy import copy
 from scipy.interpolate import InterpolatedUnivariateSpline as _spline
 import scipy.special as sp
-import cosmo as csm
-import _framework
-from copy import copy
-import _utils
+
+from . import cosmo as csm
+from . import _framework
+from . import _utils
 
 
 

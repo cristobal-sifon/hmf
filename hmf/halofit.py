@@ -6,11 +6,15 @@ This code was heavily influenced by the `HaloFit` class from the
 and Michael Schneider (https://code.google.com/p/chomp/). It has
 been modified to improve its integration with this package.
 """
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals)
+
 import numpy as np
 from scipy.integrate import simps as _simps
 import copy
 from scipy.interpolate import InterpolatedUnivariateSpline as _spline
-from cosmo import Cosmology as csm
+from .cosmo import Cosmology as csm
+
 
 def _get_spec(k, delta_k, sigma_8):
     """
@@ -60,7 +64,8 @@ def _get_spec(k, delta_k, sigma_8):
                 try:
                     lnsig1 = lnsig_old
                 except:
-                    print "WARNING: LOWEST R NOT LOW ENOUGH IN _GET_SPEC. ln(sig) starts below 0: ", lnsig1
+                    print("WARNING: LOWEST R NOT LOW ENOUGH IN _GET_SPEC." \
+                          " ln(sig) starts below 0: ", lnsig1)
                 break
 
             lnsig_old = copy.copy(lnsig1)
@@ -81,7 +86,9 @@ def _get_spec(k, delta_k, sigma_8):
     try:
         dev1, dev2 = sig_of_r.derivatives(np.log(1.0 / rknl))[1:3]
     except Exception as e:
-        print "HALOFIT WARNING: Requiring extra iterations to find derivatives of sigma at 1/rknl (this often happens at high redshift)."
+        print("HALOFIT WARNING: Requiring extra iterations to find" \
+              " derivatives of sigma at 1/rknl (this often happens at high" \
+              " redshift).")
         lnr = np.linspace(np.log(0.2 / rknl), np.log(5 / rknl), 100)
         lnsig = np.empty(100)
 
